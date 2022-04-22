@@ -1,0 +1,46 @@
+resource_group_name = "rg-sample-001"
+location            = "eastus"
+cosmos_account_name = "samplecosmosacct"
+cosmos_api          = "cassandra"
+cassandra_keyspaces = {
+  one = {
+    keyspace_name           = "keyspacenoautoscale"
+    keyspace_throughput     = 400
+    keyspace_max_throughput = null   
+  },
+  two = {
+    keyspace_name           = "keyspaceautoscale"
+    keyspace_throughput     = null
+    keyspace_max_throughput = 1000   
+  }
+}
+cassandra_tables = {
+  one = {
+    keyspace_name           = "keyspaceautoscale"
+    table_name            = "table1"
+    default_ttl_seconds   = "86400"
+    table_throughout      = 400
+    table_max_throughput  = null
+    cassandra_schema_settings = {
+      column_key_name      = "test1"
+      column_key_type      = "ascii"
+      partition_key_name   = "test1"
+      cluster_key_name     = null
+      cluster_key_order_by = null
+  }
+  }, 
+  two = {
+    keyspace_name           = "keyspacenoautoscale"
+    table_name            = "table2"
+    default_ttl_seconds   = "86400"
+    table_throughout      = 400
+    table_max_throughput  = null
+    cassandra_schema_settings = {
+      column_key_name      = "test2"
+      column_key_type      = "ascii"
+      partition_key_name   = "test2"
+      cluster_key_name     = null
+      cluster_key_order_by = null
+  }, 
+}
+}

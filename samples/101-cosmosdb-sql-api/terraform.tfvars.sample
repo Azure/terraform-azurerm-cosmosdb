@@ -1,0 +1,46 @@
+resource_group_name = "rg-sample-001"
+location            = "eastus"
+cosmos_account_name = "samplecosmosacct"
+cosmos_api          = "sql"
+sql_dbs = {
+  one = {
+    db_name           = "dbnoautoscale"
+    db_throughput     = 400
+    db_max_throughput = null
+  },
+  two = {
+    db_name           = "dbautoscale"
+    db_throughput     = null
+    db_max_throughput = 1000
+  }
+}
+sql_db_containers = {
+  one = {
+    container_name           = "container1"
+    db_name                  = "dbnoautoscale"
+    partition_key_path       = "/container/id"
+    partition_key_version    = 2
+    container_throughout     = 400
+    container_max_throughput = null
+    indexing_policy_settings = {
+      sql_indexing_mode = "consistent"
+      sql_included_path = "/*"
+      sql_excluded_path = null 
+    }
+    sql_unique_key = ["/container/id"]
+  },
+  two = {
+    container_name           = "container1"
+    db_name                  = "dbautoscale"
+    partition_key_path       = "/container/id"
+    partition_key_version    = 2
+    container_throughout     = 500
+    container_max_throughput = null
+    indexing_policy_settings = {
+      sql_indexing_mode = "consistent"
+      sql_included_path = "/*"
+      sql_excluded_path = "/excluded/?"
+    }
+    sql_unique_key = ["/container/id"]
+  }
+}

@@ -1,0 +1,50 @@
+resource_group_name = "rg-sample-001"
+location            = "eastus"
+cosmos_account_name = "samplecosmosacct"
+cosmos_api          = "gremlin"
+gremlin_dbs = {
+  one = {
+    db_name           = "dbnoautoscale"
+    db_throughput     = 400
+    db_max_throughput = null
+  },
+  two = {
+    db_name           = "dbautoscale"
+    db_throughput     = null
+    db_max_throughput = 1000
+  }
+}
+gremlin_graphs = {
+  one = {
+    graph_name                         = "graph1"
+    db_name                            = "dbautoscale"
+    partition_key_path                 = "/Example"
+    partition_key_version              = 2
+    default_ttl_seconds                = 86400
+    graph_throughput                   = 400
+    graph_max_throughput               = null
+    gremlin_automatic_indexing_policy  = true
+    gremlin_indexing_mode              = "consistent"
+    gremlin_included_paths             = ["/*"]
+    gremlin_excluded_paths             = ["/\"_etag\"/?"]
+    gremlin_conflict_resolution_mode   = null 
+    gremlin_conflict_resolution_path   = null
+    gremlin_unique_key                 = null
+  },
+  two = {
+    graph_name                         = "graph2"
+    db_name                            = "dbnoautoscale"
+    partition_key_path                 = "/Example"
+    partition_key_version              = 2
+    default_ttl_seconds                = 86400
+    graph_throughput                   = null
+    graph_max_throughput               = 1000
+    gremlin_automatic_indexing_policy  = true
+    gremlin_indexing_mode              = "consistent"
+    gremlin_included_paths             = ["/*"]
+    gremlin_excluded_paths             = ["/\"_etag\"/?"]
+    gremlin_conflict_resolution_mode   = null 
+    gremlin_conflict_resolution_path   = null
+    gremlin_unique_key                 = null
+}
+}

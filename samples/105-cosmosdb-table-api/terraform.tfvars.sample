@@ -1,0 +1,16 @@
+resource_group_name = "rg-sample-001"
+location            = "eastus"
+cosmos_account_name = "samplecosmosacct"
+cosmos_api          = "table"
+tables = {
+  one = {
+    table_name           = "tablenoautoscale"
+    table_throughput     = 400
+    table_max_throughput = null
+  },
+  two = {
+    table_name           = "tableautoscale"
+    table_throughput     = null
+    table_max_throughput = 1000
+  }
+}
