@@ -25,7 +25,26 @@ sql_db_containers = {
     indexing_policy_settings = {
       sql_indexing_mode = "consistent"
       sql_included_path = "/*"
-      sql_excluded_path = null 
+      sql_excluded_path = null
+      composite_indexes = {
+        compositeindexone = {
+          indexes = [
+            {
+              path  = "/container/name"
+              order = "Ascending"
+            },
+            {
+              path  = "/container/id"
+              order = "Ascending"
+            }
+          ]
+        }
+      }
+      spatial_indexes = {
+        spatialindexone = {
+          path = "/*"
+        }
+      }
     }
     sql_unique_key = ["/container/id"]
   },
@@ -40,6 +59,8 @@ sql_db_containers = {
       sql_indexing_mode = "consistent"
       sql_included_path = "/*"
       sql_excluded_path = "/excluded/?"
+      composite_indexes = {}
+      spatial_indexes   = {}
     }
     sql_unique_key = ["/container/id"]
   }
