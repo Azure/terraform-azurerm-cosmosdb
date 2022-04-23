@@ -9,8 +9,8 @@ variable "location" {
 }
 
 variable "log_analytics_workspace_name" {
-  type = string 
-  description = "Log Analytics Workspace Name" 
+  type        = string
+  description = "Log Analytics Workspace Name"
 }
 
 variable "cosmos_account_name" {}

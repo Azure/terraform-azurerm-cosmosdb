@@ -53,7 +53,25 @@ resource "azurerm_cosmosdb_sql_container" "this" {
         }
       }
       # Composite Index is optional
+      dynamic "composite_index" {
+        for_each = each.value.indexing_policy_settings.composite_indexes != null ? each.value.indexing_policy_settings.composite_indexes : {}
+        content {
+          dynamic "index" {
+            for_each = composite_index.value.indexes
+            content {
+              path  = index.value.path
+              order = index.value.order
+            }
+          }
+        }
+      }
       # Spatial Index is optional 
+      dynamic "spatial_index" {
+        for_each = each.value.indexing_policy_settings.spatial_indexes != null ? each.value.indexing_policy_settings.spatial_indexes : {}
+        content {
+          path = spatial_index.value.path
+        }
+      }
     }
   }
   # Unique key is required 

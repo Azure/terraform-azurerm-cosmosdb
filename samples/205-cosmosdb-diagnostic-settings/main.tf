@@ -33,9 +33,9 @@ module "azure_cosmos_db" {
   cosmos_api          = var.cosmos_api
   sql_dbs             = var.sql_dbs
   sql_db_containers   = var.sql_db_containers
-  log_analytics       = {
+  log_analytics = {
     workspace = {
-      la_workspace_name    = azurerm_log_analytics_workspace.this.name 
+      la_workspace_name    = azurerm_log_analytics_workspace.this.name
       la_workspace_rg_name = azurerm_log_analytics_workspace.this.resource_group_name
     }
   }

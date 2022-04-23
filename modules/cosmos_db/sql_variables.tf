@@ -22,6 +22,15 @@ variable "sql_db_containers" {
       sql_indexing_mode = string
       sql_included_path = string
       sql_excluded_path = string
+      composite_indexes = map(object({
+        indexes = set(object({
+          path  = string
+          order = string
+        }))
+      }))
+      spatial_indexes = map(object({
+        path = string
+      }))
     })
     sql_unique_key = list(string)
   }))
