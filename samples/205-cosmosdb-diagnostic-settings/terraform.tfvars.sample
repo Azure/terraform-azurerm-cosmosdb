@@ -1,13 +1,8 @@
-resource_group_name = "rg-sample-001"
+resource_group_name = "rg-sample-205"
 location            = "eastus"
-cosmos_account_name = "samplecosmosacct"
+cosmos_account_name = "samplecosmosacct205"
 cosmos_api          = "sql"
-log_analytics       = {
-  log_analytics1 = {
-    la_workspace_name    = "la-workspace-test01"
-    la_workspace_rg_name = "rg-test-la-workspace"
-  }
-}
+log_analytics_workspace_name = "sampleworkspace205"
 sql_dbs = {
   one = {
     db_name           = "dbnoautoscale"
@@ -31,7 +26,7 @@ sql_db_containers = {
     indexing_policy_settings = {
       sql_indexing_mode = "consistent"
       sql_included_path = "/*"
-      sql_excluded_path = null 
+      sql_excluded_path = null
     }
     sql_unique_key = ["/container/id"]
   },

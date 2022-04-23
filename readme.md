@@ -1,8 +1,8 @@
 # Introduction 
 The following repository contains a cosmos db module and samples that end-users can leverage and deploy. The repo is structured as follows: 
-1. Modules 
-    1. Cosmos db 
-2. samples 
+- Modules 
+    - Cosmos db 
+- samples 
     - 101-cosmosdb-sql-api 
         - Cosmos DB SQL API with the module 
     - 102-cosmosdb-mongo-api

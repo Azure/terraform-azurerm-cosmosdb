@@ -24,7 +24,6 @@ resource "azurerm_monitor_diagnostic_setting" "la" {
     }
   }
 
-
   metric {
     category = "AllMetrics"
   }
@@ -103,7 +102,6 @@ resource "azurerm_monitor_diagnostic_setting" "eh" {
       category = log.value
     }
   }
-
 
   metric {
     category = "AllMetrics"
