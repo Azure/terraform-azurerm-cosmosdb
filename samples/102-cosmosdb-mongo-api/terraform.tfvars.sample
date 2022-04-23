@@ -1,6 +1,6 @@
-resource_group_name = "rg-sample-001"
+resource_group_name = "rg-sample-102"
 location            = "eastus"
-cosmos_account_name = "samplecosmosacct"
+cosmos_account_name = "samplecosmosacct102"
 cosmos_api          = "mongo"
 mongo_dbs = {
   one = {
@@ -14,25 +14,25 @@ mongo_dbs = {
     db_max_throughput = 1000
   }
 }
-mongo_db_collection = {
+mongo_db_collections = {
   one = {
-    collection_name          = "collection1"
-    db_name                  = "dbautoscale"
-    default_ttl_seconds      = "2592000"
-    shard_key                = "MyShardKey"
+    collection_name           = "collection1"
+    db_name                   = "dbautoscale"
+    default_ttl_seconds       = "2592000"
+    shard_key                 = "MyShardKey"
     collection_throughout     = 400
     collection_max_throughput = null
     mongo_index_keys          = ["_id"]
     mongo_index_unique        = true
   },
   two = {
-    collection_name          = "collection2"
-    db_name                  = "dbnoautoscale"
-    default_ttl_seconds      = "2592000"
-    shard_key                = "MyShardKey"
+    collection_name           = "collection2"
+    db_name                   = "dbnoautoscale"
+    default_ttl_seconds       = "2592000"
+    shard_key                 = "MyShardKey"
     collection_throughout     = 400
     collection_max_throughput = null
     mongo_index_keys          = ["_id"]
     mongo_index_unique        = true
-}
+  }
 }
