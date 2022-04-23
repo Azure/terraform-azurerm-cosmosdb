@@ -8,8 +8,12 @@ variable "location" {
   description = "Azure Region"
 }
 
+variable "log_analytics_workspace_name" {
+  type = string 
+  description = "Log Analytics Workspace Name" 
+}
+
 variable "cosmos_account_name" {}
 variable "cosmos_api" {}
 variable "sql_dbs" {}
 variable "sql_db_containers" {}
-variable "log_analytics" {}

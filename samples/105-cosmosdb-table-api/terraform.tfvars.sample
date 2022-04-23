@@ -1,6 +1,6 @@
-resource_group_name = "rg-sample-001"
+resource_group_name = "rg-sample-105"
 location            = "eastus"
-cosmos_account_name = "samplecosmosacct"
+cosmos_account_name = "samplecosmosacct105"
 cosmos_api          = "table"
 tables = {
   one = {
