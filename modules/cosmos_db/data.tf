@@ -29,7 +29,6 @@ data "azurerm_eventhub_authorization_rule" "this" {
   resource_group_name = each.value.eventhub_rg_name
 }
 
-
 # Customer managed key dependencies  
 data "azurerm_key_vault" "this" {
   count               = var.key_vault_name != "" ? 1 : 0
@@ -41,18 +40,4 @@ data "azurerm_key_vault_key" "this" {
   count        = var.akv_key_name != "" ? 1 : 0
   name         = var.akv_key_name
   key_vault_id = data.azurerm_key_vault.this[count.index].id
-}
-
-# Private endpoint dependencies 
-data "azurerm_subnet" "this" {
-  for_each             = var.private_endpoint
-  name                 = each.value.subnet_name
-  virtual_network_name = each.value.vnet_name
-  resource_group_name  = each.value.vnet_rg_name
-}
-
-data "azurerm_private_dns_zone" "this" {
-  for_each            = var.private_endpoint
-  name                = var.private_dns_zone_name[var.cosmos_api]
-  resource_group_name = each.value.dns_zone_rg_name
 }
