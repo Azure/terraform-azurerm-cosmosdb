@@ -9,7 +9,6 @@ locals {
   ladiag_settings_name = "la-diag-${local.cosmos_account_name}"
   sadiag_settings_name = "sa-diag-${local.cosmos_account_name}"
   ehdiag_settings_name = "eh-diag-${local.cosmos_account_name}"
-  pe_name              = "pe-${local.cosmos_account_name}"
   firewall_ips         = var.firewall_ip == [] ? "${join(",", var.azure_portal_access, var.azure_dc_access)}" : "${join(",", var.firewall_ip, var.azure_portal_access, var.azure_dc_access)}"
   diag_settings_name   = "diag-${local.cosmos_account_name}"
   diag_logs            = var.cosmos_api == "sql" ? ["QueryRuntimeStatistics", "PartitionKeyRUConsumption"] : [var.logs_config[var.cosmos_api]]

@@ -1,13 +1,13 @@
 resource "azurerm_private_endpoint" "this" {
   for_each            = var.private_endpoint
   name                = each.value.name
-  location            = data.azurerm_resource_group.this.location
-  resource_group_name = data.azurerm_resource_group.this.name
-  subnet_id           = data.azurerm_subnet.this[each.key].id
+  location            = data.azurerm_resource_group.pe_vnet_rg[each.key].location
+  resource_group_name = data.azurerm_resource_group.pe_vnet_rg[each.key].name
+  subnet_id           = data.azurerm_subnet.pe_subnet[each.key].id
 
   private_dns_zone_group {
     name                 = each.value.dns_zone_group_name != "" ? each.value.dns_zone_group_name : "default"
-    private_dns_zone_ids = [data.azurerm_private_dns_zone.this[each.key].id]
+    private_dns_zone_ids = [data.azurerm_private_dns_zone.pe_private_dns_zone[each.key].id]
   }
 
   private_service_connection {
