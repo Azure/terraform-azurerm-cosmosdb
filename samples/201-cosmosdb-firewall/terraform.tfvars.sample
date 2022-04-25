@@ -66,16 +66,6 @@ sql_db_containers = {
   }
 }
 
-# Virtual Network, Subnet, DNS Zone and PE Parameters 
-virtual_network_name       = "samplevnet_201"
-vnet_address_space         = ["10.0.0.0/16"]
-subnet_name                = "samplesubnet_201"
-subnet_prefixes            = ["10.0.0.0/24"]
-private_dns_vnet_link_name = "sqlapi_zone_link"
-dns_zone_group_name        = "pe_zone_group"
-pe_name                    = "cosmosdb_pe"
-pe_connection_name         = "cosmosdb_pe_connection"
-
 # Firewall Parameters
 public_network_access_enabled = false
 ip_firewall_enabled           = true
