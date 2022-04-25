@@ -1,3 +1,16 @@
+# Azure provider version 
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = ">=2.84"
+    }
+    azapi = {
+      source = "azure/azapi"
+    }
+  }
+}
+
 resource "azurerm_cosmosdb_account" "this" {
   name                          = local.cosmos_account_name
   location                      = local.location
@@ -59,7 +72,10 @@ resource "azurerm_cosmosdb_account" "this" {
     }
   }
 
-  identity {
-    type = "SystemAssigned"
+  lifecycle {
+    # Ignoring identity block changes as this is managed outside of azurerm_cosmosdb_account resource
+    ignore_changes = [
+      identity
+    ]
   }
 }
