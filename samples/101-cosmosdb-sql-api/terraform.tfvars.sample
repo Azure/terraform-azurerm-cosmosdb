@@ -22,6 +22,8 @@ sql_db_containers = {
     partition_key_version    = 2
     container_throughout     = 400
     container_max_throughput = null
+    default_ttl = null 
+    analytical_storage_ttl = null 
     indexing_policy_settings = {
       sql_indexing_mode = "consistent"
       sql_included_path = "/*"
@@ -47,7 +49,8 @@ sql_db_containers = {
       }
     }
     sql_unique_key = ["/container/id"]
-  },
+    conflict_resolution_policy = null 
+  }
   two = {
     container_name           = "container1"
     db_name                  = "dbautoscale"
@@ -55,6 +58,8 @@ sql_db_containers = {
     partition_key_version    = 2
     container_throughout     = 500
     container_max_throughput = null
+    default_ttl = null 
+    analytical_storage_ttl = null 
     indexing_policy_settings = {
       sql_indexing_mode = "consistent"
       sql_included_path = "/*"
@@ -63,5 +68,6 @@ sql_db_containers = {
       spatial_indexes   = {}
     }
     sql_unique_key = ["/container/id"]
+    conflict_resolution_policy = null 
   }
 }
