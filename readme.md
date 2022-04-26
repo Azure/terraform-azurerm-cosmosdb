@@ -24,7 +24,7 @@ The following repository contains a cosmos db module and samples that end-users 
     - 205-cosmosdb-diagnostics-settings
         - Cosmos DB with diagnostic settings enabled for log analytics
     - 301-cosmosdb-multi-region-write
-        - Cosmos DB SQL API with multi-master write 
+        - Cosmos DB SQL API with multi-region write 
     - 302-cosmosdb-with-read-replicas
         - Cosmos DB SQL API with single region write, multi-region read 
     - 303-secured-cosmosdb

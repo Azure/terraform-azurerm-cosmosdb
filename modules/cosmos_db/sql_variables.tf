@@ -17,8 +17,8 @@ variable "sql_db_containers" {
     partition_key_version    = number
     container_throughout     = number
     container_max_throughput = number
-    default_ttl = number 
-    analytical_storage_ttl = number 
+    default_ttl              = number
+    analytical_storage_ttl   = number
     indexing_policy_settings = object({
       sql_indexing_mode = string
       sql_included_path = string
@@ -35,8 +35,8 @@ variable "sql_db_containers" {
     })
     sql_unique_key = list(string)
     conflict_resolution_policy = object({
-      mode = string 
-      path = string 
+      mode      = string
+      path      = string
       procedure = string
     })
   }))

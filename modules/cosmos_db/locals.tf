@@ -12,7 +12,7 @@ locals {
   firewall_ips         = var.firewall_ip == [] ? "${join(",", var.azure_portal_access, var.azure_dc_access)}" : "${join(",", var.firewall_ip, var.azure_portal_access, var.azure_dc_access)}"
   diag_settings_name   = "diag-${local.cosmos_account_name}"
   diag_logs            = var.cosmos_api == "sql" ? ["QueryRuntimeStatistics", "PartitionKeyRUConsumption"] : [var.logs_config[var.cosmos_api]]
-  identity_body = var.identity.type == "SystemAssigned" ? local.systemassigned_identity_body: local.userassigned_identity_body
+  identity_body        = var.identity.type == "SystemAssigned" ? local.systemassigned_identity_body : local.userassigned_identity_body
   userassigned_identity_body = jsonencode({
     identity = {
       type = var.identity.type
@@ -23,7 +23,7 @@ locals {
   })
   systemassigned_identity_body = jsonencode({
     identity = {
-      type = var.identity.type 
+      type = var.identity.type
     }
   })
   tags = {
