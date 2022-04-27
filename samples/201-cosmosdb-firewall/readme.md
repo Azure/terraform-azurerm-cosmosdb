@@ -1,5 +1,5 @@
 # 201 Cosmos DB SQL API 
-This template deploys a cosmos db account with 2 sql databases (autoscale and no autoscale) and 2 containers (per each db) along with a private endpoint and enable IP firewall and only allow access from the specified public IP, Azure portal and Global Azure dataenters. This sample assumes that a resource group, virtual network, subnet and private dns zone has been previously created outside of the module and is referenced as an input parameter. A sample input parameters file has been included as part of this example.
+This template deploys a cosmos db account with 2 sql databases (autoscale and no autoscale) and 2 containers (per each db) and enable IP firewall and only allow access from the specified public IP, Azure portal and Global Azure dataenters. This sample assumes that a resource group has been previously created outside of the module and is referenced as an input parameter. A sample input parameters file has been included as part of this example.
 
 ## Variables 
 | Name | Description |
