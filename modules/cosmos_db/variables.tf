@@ -144,3 +144,9 @@ variable "additional_capabilities" {
   description = "List of additional capabilities for Cosmos DB API. - possible options are DisableRateLimitingResponses, EnableAggregationPipeline, EnableServerless, mongoEnableDocLevelTTL, MongoDBv3.4, AllowSelfServeUpgradeToMongo36"
   default     = []
 }
+
+variable "enable_systemassigned_identity" {
+  type = bool
+  description = "Enable System Assigned Identity"
+  default = false
+}
