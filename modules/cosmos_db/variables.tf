@@ -114,23 +114,6 @@ variable "backup_storage_redundancy" {
   default     = "Geo"
 }
 
-variable "key_vault_name" {
-  type        = string
-  description = "Name of the existing key vault. It is needed for encryption using customer managed key."
-  default     = ""
-}
-
-variable "key_vault_rg_name" {
-  type        = string
-  description = "Name of the resource group in which key vault exists."
-  default     = ""
-}
-
-variable "akv_key_name" {
-  type        = string
-  description = "Name of the existing key in key vault. It is needed for encryption using customer managed key."
-  default     = ""
-}
 
 variable "geo_locations" {
   description = "List of map of geo locations and other properties to create primary and secodanry databasees."
@@ -163,7 +146,7 @@ variable "additional_capabilities" {
 }
 
 variable "enable_systemassigned_identity" {
-  type = bool
+  type        = bool
   description = "Enable System Assigned Identity"
-  default = false
+  default     = false
 }
