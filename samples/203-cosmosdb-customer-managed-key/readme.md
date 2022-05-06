@@ -1,5 +1,5 @@
 # 203 Cosmos DB SQL API 
-This template deploys a cosmos db account with 2 sql databases (autoscale and no autoscale) and 2 containers (per each db) encrypted using customer managed key. This sample assumes that a resource group, Azure key vault, and encryption key have been previously created outside of the module and is referenced as an input parameter. A sample input parameters file has been included as part of this example.
+This template deploys a cosmos db account with 2 sql databases (autoscale and no autoscale) and 2 containers (per each db) encrypted using customer managed key. This sample assumes that a resource group, Azure key vault, and encryption key have been previously created outside of the module and is referenced as an input parameter. A sample input parameters file has been included as part of this example. The example also demonstrates swapping out FirstPartyIdentity to SystemAssignedIdentity for default_identity_type using the AzApi provider.
 
 ## Variables 
 | Name | Description |

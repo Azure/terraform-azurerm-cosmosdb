@@ -146,7 +146,7 @@ variable "additional_capabilities" {
 }
 
 variable "enable_systemassigned_identity" {
-  type = bool
+  type        = bool
   description = "Enable System Assigned Identity"
-  default = false
+  default     = false
 }

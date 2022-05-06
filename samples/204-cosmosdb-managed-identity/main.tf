@@ -19,14 +19,14 @@ resource "azurerm_resource_group" "this" {
 }
 
 module "azure_cosmos_db" {
-  source              = "../../modules/cosmos_db"
-  resource_group_name = azurerm_resource_group.this.name
-  location            = azurerm_resource_group.this.location
-  cosmos_account_name = var.cosmos_account_name
-  cosmos_api          = var.cosmos_api
-  sql_dbs             = var.sql_dbs
-  sql_db_containers   = var.sql_db_containers
-  enable_systemassigned_identity = true 
+  source                         = "../../modules/cosmos_db"
+  resource_group_name            = azurerm_resource_group.this.name
+  location                       = azurerm_resource_group.this.location
+  cosmos_account_name            = var.cosmos_account_name
+  cosmos_api                     = var.cosmos_api
+  sql_dbs                        = var.sql_dbs
+  sql_db_containers              = var.sql_db_containers
+  enable_systemassigned_identity = true
   depends_on = [
     azurerm_resource_group.this,
   ]

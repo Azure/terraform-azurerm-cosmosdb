@@ -78,4 +78,10 @@ resource "azurerm_cosmosdb_account" "this" {
       type = "SystemAssigned"
     }
   }
+
+  lifecycle {
+    ignore_changes = [
+      default_identity_type
+    ]
+  }
 }
