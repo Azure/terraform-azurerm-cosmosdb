@@ -72,10 +72,10 @@ resource "azurerm_cosmosdb_account" "this" {
     }
   }
 
-  dynamic "identity" {
-    for_each = var.enable_systemassigned_identity ? [1] : []
-    content {
-      type = "SystemAssigned"
-    }
+  lifecycle {
+    # Ignoring identity block changes as this is managed outside of azurerm_cosmosdb_account resource
+    ignore_changes = [
+      identity
+    ]
   }
 }

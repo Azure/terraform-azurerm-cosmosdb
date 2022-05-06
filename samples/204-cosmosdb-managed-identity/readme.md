@@ -1,5 +1,11 @@
 # 204 Cosmos DB SQL API with Managed Identity
-This template deploys a cosmos db account with 2 sql databases (autoscale and no autoscale) and 2 cointainers (per each db) with system assigned managed identity enabled. This sample assumes that a resource group has been previously created and is referenced as an input parameter into the module. A sample input parameters file has been included as part of this example.
+This template deploys a cosmos db account with 2 sql databases (autoscale and no autoscale) and 2 cointainers (per each db) with user assigned managed identity enabled. This sample assumes that a resource group and user managed identity has been previously created and is referenced as an input parameter. A sample input parameters file has been included as part of this example.
+
+For the identity input parameters: 
+- Set identity.type = "SystemAssigned" and id ="" for system-assigned only
+- Set identity.type = "UserAssigned" and id = azurerm_user_assigned_identity.this.id for user-assigned only 
+- Set identity.type = "SystemAssigned,UserAssigned" and id = azurerm_user_assigned_identity.this.id  for both user and system assigned identity
+If user assigned identity is enabled, it can't be disabled with the rest-api provider at the moment. 
 
 ## Variables 
 | Name | Description |
@@ -10,7 +16,7 @@ This template deploys a cosmos db account with 2 sql databases (autoscale and no
 | cosmos_api | API for Cosmos db, should be "sql" in this example | 
 | sql_dbs | Cosmos SQL DBs to create | 
 | sql_db_containers | Cosmos SQL DB containers to create per each db | 
-| enable_systemassigned_identity | True/False flag to enable system assigned identity | 
+| identity | Identity parameters for managed identity usage: Supports both user and system assigned identities" | 
 
 Please see terraform.tfvars.sample for example inputs. Above is the minimal input requirements for the cosmos db module. 
 
