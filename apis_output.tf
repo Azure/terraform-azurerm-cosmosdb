@@ -1,40 +1,49 @@
 # Output SQL reference 
-output "sql-db-id" {
+output "sql_db_id" {
   value = [for sql_db_id in azurerm_cosmosdb_sql_database.this : zipmap([sql_db_id.name], [sql_db_id.id])]
+  description = "SQL API DB IDs"
 }
 
-output "sql-containers-id" {
+output "sql_containers_id" {
   value = [for sql_container_id in azurerm_cosmosdb_sql_container.this : zipmap([sql_container_id.name], [sql_container_id.id])]
+  description = "SQL API Container IDs"
 }
 
 # Output Cassandra reference 
-output "cassandra-keyspace-id" {
-  value = [for cassandra-keyspace-id in azurerm_cosmosdb_cassandra_keyspace.this : zipmap([cassandra-keyspace-id.name], [cassandra-keyspace-id.id])]
+output "cassandra_keyspace_id" {
+  value = [for cassandra_keyspace_id in azurerm_cosmosdb_cassandra_keyspace.this : zipmap([cassandra_keyspace_id.name], [cassandra_keyspace_id.id])]
+  description = "Cassandra API Keyspace IDs"
 }
 
-output "cassandra-table-id" {
-  value = [for cassandra-table-id in azurerm_cosmosdb_cassandra_table.this : zipmap([cassandra-table-id.name], [cassandra-table-id.id])]
+output "cassandra_table_id" {
+  value = [for cassandra_table_id in azurerm_cosmosdb_cassandra_table.this : zipmap([cassandra_table_id.name], [cassandra_table_id.id])]
+  description = "Cassandra API Table IDs"
 }
 
 # Output Gremlin reference 
-output "gremlin-db-id" {
-  value = [for gremlin-db-id in azurerm_cosmosdb_gremlin_database.this : zipmap([gremlin-db-id.name], [gremlin-db-id.id])]
+output "gremlin_db_id" {
+  value = [for gremlin_db_id in azurerm_cosmosdb_gremlin_database.this : zipmap([gremlin_db_id.name], [gremlin_db_id.id])]
+  description = "Gremlin API DB IDs"
 }
 
-output "gremlin-graph-id" {
-  value = [for gremlin-graph-id in azurerm_cosmosdb_gremlin_graph.this : zipmap([gremlin-graph-id.name], [gremlin-graph-id.id])]
+output "gremlin_graph_id" {
+  value = [for gremlin_graph_id in azurerm_cosmosdb_gremlin_graph.this : zipmap([gremlin_graph_id.name], [gremlin_graph_id.id])]
+  description = "Gremlin API Graph IDs"
 }
 
 # Output Mongo reference 
-output "mongo-db-id" {
-  value = [for mongo-db-id in azurerm_cosmosdb_mongo_database.this : zipmap([mongo-db-id.name], [mongo-db-id.id])]
+output "mongo_db_id" {
+  value = [for mongo_db_id in azurerm_cosmosdb_mongo_database.this : zipmap([mongo_db_id.name], [mongo_db_id.id])]
+  description = "Mongo API DB IDs"
 }
 
-output "mongo-db-collection-id" {
-  value = [for mongo-db-collection-id in azurerm_cosmosdb_mongo_collection.this : zipmap([mongo-db-collection-id.name], [mongo-db-collection-id.id])]
+output "mongo_db_collection_id" {
+  value = [for mongo_db_collection_id in azurerm_cosmosdb_mongo_collection.this : zipmap([mongo_db_collection_id.name], [mongo_db_collection_id.id])]
+  description = "Mongo API Collection IDs"
 }
 
 # Output Table reference 
-output "table-id" {
-  value = [for table-id in azurerm_cosmosdb_table.this : zipmap([table-id.name], [table-id.id])]
+output "table_id" {
+  value = [for table_id in azurerm_cosmosdb_table.this : zipmap([table_id.name], [table_id.id])]
+  description = "Table API Table IDs"
 }

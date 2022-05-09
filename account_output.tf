@@ -1,45 +1,55 @@
 # Output account reference 
-output "cosmos-db-id" {
+output "cosmosdb_id" {
   value = azurerm_cosmosdb_account.this.id
+  description = "Cosmos DB Account ID"
 }
 
-output "cosmos-db-endpoint" {
+output "cosmosdb_endpoint" {
   value = azurerm_cosmosdb_account.this.endpoint
+  description = "Cosmos DB Endpoint"
 }
 
-output "cosmos-db-read_endpoint" {
+output "cosmosdb_read_endpoint" {
   value = azurerm_cosmosdb_account.this.read_endpoints
+  description = "Cosmos DB Read Endpoint"
 }
 
-output "cosmos-db-write_endpoint" {
+output "cosmosdb_write_endpoint" {
   value = azurerm_cosmosdb_account.this.write_endpoints
+  description = "Cosmos DB Write Endpoint"
 }
 
-output "cosmos-db-primary_key" {
+output "cosmosdb_primary_key" {
   value     = azurerm_cosmosdb_account.this.primary_key
   sensitive = true
+  description = "Cosmos DB Primary Keys"
 }
 
-output "cosmos-db-secondary_key" {
+output "cosmosdb_secondary_key" {
   value     = azurerm_cosmosdb_account.this.secondary_key
   sensitive = true
+  description = "Cosmos DB Secondary Keys"
 }
 
-output "cosmos-db-primary_readonly_key" {
+output "cosmosdb_primary_readonly_key" {
   value     = azurerm_cosmosdb_account.this.primary_readonly_key
   sensitive = true
+  description = "Cosmos DB Primary Read Only Keys"
 }
 
-output "cosmos-db-secondary_readonly_key" {
+output "cosmosdb_secondary_readonly_key" {
   value     = azurerm_cosmosdb_account.this.secondary_readonly_key
   sensitive = true
+  description = "Cosmos DB Secondary Read Only Keys"
 }
 
-output "cosmos-db-connection_strings" {
+output "cosmosdb_connection_strings" {
   value     = azurerm_cosmosdb_account.this.connection_strings
   sensitive = true
+  description = "Cosmos DB Connection Strings"
 }
 
 output "cosmosdb_systemassigned_identity" {
-  value = enable_systemassigned_identity ? zipmap(["tenant_id", "principal_id"], [azurerm_cosmosdb_account.this.identity[0].tenant_id, azurerm_cosmosdb_account.this.identity[0].principal_id]) : {}
+  value = var.enable_systemassigned_identity ? zipmap(["tenant_id", "principal_id"], [azurerm_cosmosdb_account.this.identity[0].tenant_id, azurerm_cosmosdb_account.this.identity[0].principal_id]) : {}
+  description = "Cosmos DB System Assigned Identity (Tenant ID and Principal ID)"
 }

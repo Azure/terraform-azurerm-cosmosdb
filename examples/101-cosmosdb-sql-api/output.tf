@@ -1,48 +1,48 @@
-output "cosmos-db-account-id" {
-  value = module.azure_cosmos_db.cosmos-db-id
+output "cosmosdb_account_id" {
+  value = module.azure_cosmos_db.cosmosdb_id
 }
 
-output "cosmos-db-endpoint" {
-  value = module.azure_cosmos_db.cosmos-db-endpoint
+output "cosmosdb_endpoint" {
+  value = module.azure_cosmos_db.cosmosdb_endpoint
 }
 
-output "cosmos-db-read_endpoint" {
-  value = module.azure_cosmos_db.cosmos-db-read_endpoint
+output "cosmosdb_read_endpoint" {
+  value = module.azure_cosmos_db.cosmosdb_read_endpoint
 }
 
-output "cosmos-db-write_endpoint" {
-  value = module.azure_cosmos_db.cosmos-db-write_endpoint
+output "cosmosdb_write_endpoint" {
+  value = module.azure_cosmos_db.cosmosdb_write_endpoint
 }
 
-output "cosmos-db-primary_key" {
-  value     = module.azure_cosmos_db.cosmos-db-primary_key
+output "cosmosdb_primary_key" {
+  value     = module.azure_cosmos_db.cosmosdb_primary_key
   sensitive = true
 }
 
-output "cosmos-db-secondary_key" {
-  value     = module.azure_cosmos_db.cosmos-db-secondary_key
+output "cosmosdb_secondary_key" {
+  value     = module.azure_cosmos_db.cosmosdb_secondary_key
   sensitive = true
 }
 
-output "cosmos-db-primary_readonly_key" {
-  value     = module.azure_cosmos_db.cosmos-db-primary_readonly_key
+output "cosmosdb_primary_readonly_key" {
+  value     = module.azure_cosmos_db.cosmosdb_primary_readonly_key
   sensitive = true
 }
 
-output "cosmos-db-secondary_readonly_key" {
-  value     = module.azure_cosmos_db.cosmos-db-secondary_readonly_key
+output "cosmosdb_secondary_readonly_key" {
+  value     = module.azure_cosmos_db.cosmosdb_secondary_readonly_key
   sensitive = true
 }
 
-output "cosmos-db-connection_strings" {
-  value     = module.azure_cosmos_db.cosmos-db-connection_strings
+output "cosmosdb_connection_strings" {
+  value     = module.azure_cosmos_db.cosmosdb_connection_strings
   sensitive = true
 }
 
-output "sql-db-id" {
-  value = module.azure_cosmos_db.sql-db-id
+output "sql_db_id" {
+  value = module.azure_cosmos_db.sql_db_id
 }
 
-output "sql-container-id" {
-  value = module.azure_cosmos_db.sql-containers-id
+output "sql_container_id" {
+  value = module.azure_cosmos_db.sql_containers_id
 }
