@@ -41,5 +41,5 @@ output "cosmos-db-connection_strings" {
 }
 
 output "cosmosdb_systemassigned_identity" {
-  value = zipmap(["tenant_id", "principal_id"], [azurerm_cosmosdb_account.this.identity[0].tenant_id, azurerm_cosmosdb_account.this.identity[0].principal_id])
+  value = enable_systemassigned_identity ? zipmap(["tenant_id", "principal_id"], [azurerm_cosmosdb_account.this.identity[0].tenant_id, azurerm_cosmosdb_account.this.identity[0].principal_id]) : {}
 }

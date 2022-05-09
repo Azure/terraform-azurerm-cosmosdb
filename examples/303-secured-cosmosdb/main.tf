@@ -124,7 +124,7 @@ resource "azurerm_private_dns_zone_virtual_network_link" "this" {
 }
 
 module "azure_cosmos_db" {
-  source              = "../../modules/cosmos_db"
+  source              = "Azure/cosmosdb/azurerm"
   resource_group_name = azurerm_resource_group.this.name
   location            = azurerm_resource_group.this.location
   cosmos_account_name = var.cosmos_account_name
