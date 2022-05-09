@@ -1,5 +1,5 @@
 # 101 Cosmos DB SQL API 
-This template deploys a cosmos db account with 2 sql databases (autoscale and no autoscale) and 2 cointainers (per each db). This sample assumes that a resource group has been previously created and is referenced as an input parameter. A sample input parameters file has been included as part of this example.
+This template deploys a cosmos db account with 2 sql databases (autoscale and no autoscale) and 2 containers (per each db). This sample assumes that a resource group has been previously created and is referenced as an input parameter. A sample input parameters file has been included as part of this example.
 
 ## Variables 
 | Name | Description |
