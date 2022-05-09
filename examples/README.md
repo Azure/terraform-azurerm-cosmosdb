@@ -29,11 +29,6 @@ The following repository contains a cosmos db module and samples that end-users 
         - Cosmos DB SQL API with single region write, multi-region read 
     - 303-secured-cosmosdb
         - Cosmos DB SQL API with private endpoint, CMK, managed identity and single region write, multi-region read 
-    - 304-cosmosdb-private-endpoint-with-aks
-        - Cosmos DB SQL API with privat endpoint and customer managed key
-        - VNET with 2 subnets, Public Subnet with AKS, Private Subnet for Cosmos DB Private Endpoint 
-        - AKS public cluster with public IP ingress via ELB
-        - Helm deploy of voting app into AKS 
 
 # Contribute
 This project welcomes contributions and suggestions. Most contributions require you to agree to a Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us the rights to use your contribution. For details, visit https://cla.microsoft.com.
