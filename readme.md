@@ -1,41 +1,21 @@
-# Introduction 
-The following repository contains a cosmos db module and samples that end-users can leverage and deploy. The repo is structured as follows: 
-- Modules 
-    - Cosmos db 
-- samples 
-    - 101-cosmosdb-sql-api 
-        - Cosmos DB SQL API with the module 
-    - 102-cosmosdb-mongo-api
-        - Cosmos DB Mongo API with the module
-    - 103-cosmosdb-cassandra-api
-        - Cosmos DB Cassandra API with the module
-    - 104-cosmosdb-gremlin-api
-        - Cosmos DB Gremlin API with the module
-    - 105-cosmosdb-table-api
-        - Cosmos DB Table API with the module
-    - 201-cosmosdb-firewall
-        - Cosmos DB with IP firewall enabled - IP of terraform client caller (end-user/ado-agent)
-    - 202-cosmosdb-private-endpoint
-        - Cosmos DB with private endpoint 
-    - 203-cosmosdb-customer-managed-key
-        - Cosmos DB encrypted with customer managed key 
-    - 204-cosmosdb-managed-identity
-        - Cosmos DB with first-party identity enabled or user assigned identity
-    - 205-cosmosdb-diagnostics-settings
-        - Cosmos DB with diagnostic settings enabled for log analytics
-    - 301-cosmosdb-multi-region-write
-        - Cosmos DB SQL API with multi-region write 
-    - 302-cosmosdb-with-read-replicas
-        - Cosmos DB SQL API with single region write, multi-region read 
-    - 303-secured-cosmosdb
-        - Cosmos DB SQL API with private endpoint, CMK, managed identity and single region write, multi-region read 
-    - 304-cosmosdb-private-endpoint-with-aks
-        - Cosmos DB SQL API with privat endpoint and customer managed key
-        - VNET with 2 subnets, Public Subnet with AKS, Private Subnet for Cosmos DB Private Endpoint 
-        - AKS public cluster with public IP ingress via ELB
-        - Helm deploy of voting app into AKS 
+# Getting Started
+The following cosmos db module provides configurable baseline service capabilities to help simplify infrastructure as code deployment and accelerate workload enablement. The module is separate into relevant resource groupings based on cosmos db database/api requirements. The input variables specified for the module will provision the appropriate database/api instances. This module does not create dependent resources for certain configurations (ex. the module will not create a key vault for customer managed key encryption, this should be created external to the module and passed in as a parameter).
 
-# Contribute
+Note: Please specify only the required database/api parameter for single api type. Specifying multiple (sql_api parameters and mongo_db parameters) would result in unintended errors. 
+
+# Terraform Files and associated resources, variables and outputs
+- main.tf: Azure Cosmos DB account and related configurations across all apis
+    - IP Firewall and Private Endpoint configurations 
+    - Custoemr managed key for encryption 
+    - AAD Identity configuration 
+- sql_api.tf: SQL API resources 
+- mongo_api.tf: Mongo API resources
+- cassandra_api.tf: Cassandra API resources
+- gremlin_api.tf: Gremlin API resources 
+- variables.tf: Variable inputs for cosmos db resources to provision
+- outputs.tf: Output attributes for all cosmos db resources 
+
+# Contribute 
 This project welcomes contributions and suggestions. Most contributions require you to agree to a Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us the rights to use your contribution. For details, visit https://cla.microsoft.com.
 
 When you submit a pull request, a CLA-bot will automatically determine whether you need to provide a CLA and decorate the PR appropriately (e.g., label, comment). Simply follow the instructions provided by the bot. You will only need to do this once across all repos using our CLA.
