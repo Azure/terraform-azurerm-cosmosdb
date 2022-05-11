@@ -1,5 +1,12 @@
 # 303 Cosmos DB SQL API with Read Replica
-This template deploys a single region write cosmos db account with a read replica (east and west us regions) with 2 sql databases (autoscale and no autoscale) and 2 containers (per each db). This sample assumes that a resource group has been previously created and is referenced as an input parameter. A sample input parameters file has been included as part of this example.
+This template deploys a single region write cosmos db account with a read replica (east and west us regions) with 2 sql databases (autoscale and no autoscale) and 2 containers (per each db), system assigned identity enabled, customer managed keys and private endpoints per each VNET (East2 and West2). There are 2 deployment patterns with private endpoints and cosmosdb: 1) Dual Zone and 2) Single Zone, each with their own pros and cons. Both options are depicted below:
+- Single Zone (1 private DNS zone for all regions). This method works if you need hybrid deployment and active-passive setup where you intend to failover from write region to read region. 
+![303-secured-cosmosdb-single-zone.png](303-secured-cosmosdb-single-zone.png)
+- Dual Zone (2x private DNS zone, for each region). This method works well if you are fully cloud-native, but does not work in a hybrid deployment model where you need to resolve from on-premise to Azure. 
+![303-secured-cosmosdb-dual-zone.png](303-secured-cosmosdb-dual-zone.png)
+
+
+This sample will deploy the single zone model. This sample assumes that a resource group has been previously created and is referenced as an input parameter. A sample input parameters file has been included as part of this example.
 
 ## Variables 
 | Name | Description |
