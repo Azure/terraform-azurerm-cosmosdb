@@ -6,6 +6,7 @@ variable "private_endpoint" {
     vnet_name                       = string
     subnet_name                     = string
     dns_zone_rg_name                = string
+    enable_private_dns_entry        = bool
     dns_zone_group_name             = string
     private_service_connection_name = string
     is_manual_connection            = bool
