@@ -22,8 +22,13 @@ mongo_db_collections = {
     shard_key                 = "MyShardKey"
     collection_throughout     = 400
     collection_max_throughput = null
-    mongo_index_keys          = ["_id"]
-    mongo_index_unique        = true
+    analytical_storage_ttl    = null
+    indexes                   = {
+      indexone                = {
+        mongo_index_keys          = ["_id"]
+        mongo_index_unique        = true
+      }
+    }
   },
   two = {
     collection_name           = "collection2"
@@ -32,7 +37,12 @@ mongo_db_collections = {
     shard_key                 = "MyShardKey"
     collection_throughout     = 400
     collection_max_throughput = null
-    mongo_index_keys          = ["_id"]
-    mongo_index_unique        = true
+    analytical_storage_ttl    = null
+    indexes                   = {
+      indextwo                = {
+        mongo_index_keys          = ["_id"]
+        mongo_index_unique        = true
+      }
+    }
   }
 }

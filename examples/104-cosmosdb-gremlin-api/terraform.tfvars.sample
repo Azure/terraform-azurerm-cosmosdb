@@ -23,13 +23,33 @@ gremlin_graphs = {
     default_ttl_seconds               = 86400
     graph_throughput                  = 400
     graph_max_throughput              = null
-    gremlin_automatic_indexing_policy = true
-    gremlin_indexing_mode             = "consistent"
-    gremlin_included_paths            = ["/*"]
-    gremlin_excluded_paths            = ["/\"_etag\"/?"]
-    gremlin_conflict_resolution_mode  = null
-    gremlin_conflict_resolution_path  = null
-    gremlin_unique_key                = null
+    index_policy_settings             = {
+      indexing_automatic        = true
+      indexing_mode             = "consistent"
+      included_paths            = ["/*"]
+      excluded_paths            = ["/\"_etag\"/?"]
+      composite_indexes         = {
+        compositeindexesone             = {
+          indexes  = [
+            { 
+              index_path  = "/container/name"
+              index_order = "Ascending"
+            },
+            { 
+              index_path  = "/container/id"
+              index_order = "Ascending"
+            }
+            ]
+          }
+        }
+      spatial_indexes = {
+        one = {
+          spatial_index_path = "/*"
+        }
+      }
+    }
+    conflict_resolution_policy  = null
+    unique_key =  ["/container/id"]
   },
   two = {
     graph_name                        = "graph2"
@@ -39,12 +59,15 @@ gremlin_graphs = {
     default_ttl_seconds               = 86400
     graph_throughput                  = null
     graph_max_throughput              = 1000
-    gremlin_automatic_indexing_policy = true
-    gremlin_indexing_mode             = "consistent"
-    gremlin_included_paths            = ["/*"]
-    gremlin_excluded_paths            = ["/\"_etag\"/?"]
-    gremlin_conflict_resolution_mode  = null
-    gremlin_conflict_resolution_path  = null
-    gremlin_unique_key                = null
-  }
+    index_policy_settings             = {
+      indexing_automatic        = true
+      indexing_mode             = "consistent"
+      included_paths            = ["/*"]
+      excluded_paths            = ["/\"_etag\"/?"]
+      composite_indexes         = null
+      spatial_indexes = null
+    }
+    conflict_resolution_policy  = null
+    unique_key = ["/container/id"]
+}
 }

@@ -18,8 +18,11 @@ variable "mongo_db_collections" {
     shard_key                 = string
     collection_throughout     = number
     collection_max_throughput = number
-    mongo_index_keys          = list(string)
-    mongo_index_unique        = bool
+    analytical_storage_ttl    = number
+    indexes = map(object({
+      mongo_index_keys   = list(string)
+      mongo_index_unique = bool
+    }))
   }))
   description = "List of Cosmos DB Mongo collections to create. Some parameters are inherited from cosmos account."
   default     = {}

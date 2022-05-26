@@ -19,28 +19,52 @@ cassandra_tables = {
     keyspace_name        = "keyspaceautoscale"
     table_name           = "table1"
     default_ttl_seconds  = "86400"
+    analytical_storage_ttl = null
     table_throughout     = 400
     table_max_throughput = null
     cassandra_schema_settings = {
-      column_key_name      = "test1"
-      column_key_type      = "ascii"
-      partition_key_name   = "test1"
-      cluster_key_name     = null
-      cluster_key_order_by = null
+      column  = {
+        columnone = {
+          column_key_name      = "loadid"
+          column_key_type      = "uuid"  
+        },
+        columntwo = {
+          column_key_name      = "machine"
+          column_key_type      = "uuid"  
+        },
+        columnthree = {
+          column_key_name      = "mtime"
+          column_key_type      = "int"  
+        }      
+      }
+      partition_key = {
+        partition_key_one = {
+          partition_key_name   = "loadid"
+        }  
+      }
+      cluster_key = null
     }
   },
-  two = {
-    keyspace_name        = "keyspacenoautoscale"
-    table_name           = "table2"
-    default_ttl_seconds  = "86400"
-    table_throughout     = 400
-    table_max_throughput = null
-    cassandra_schema_settings = {
-      column_key_name      = "test2"
-      column_key_type      = "ascii"
-      partition_key_name   = "test2"
-      cluster_key_name     = null
-      cluster_key_order_by = null
-    },
-  }
+two = {
+     keyspace_name        = "keyspacenoautoscale"
+     table_name           = "table2"
+     default_ttl_seconds  = "86400"
+     analytical_storage_ttl = null
+     table_throughout     = 400
+     table_max_throughput = null
+     cassandra_schema_settings = {
+       column  = {
+         columntwo = {
+           column_key_name      = "loadid"
+           column_key_type      = "uuid"  
+         }
+       }
+       partition_key = {
+         partition_key_two = {
+           partition_key_name   = "loadid"
+         }  
+       }
+       cluster_key = null
+     }
+    }
 }
