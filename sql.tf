@@ -76,9 +76,11 @@ resource "azurerm_cosmosdb_sql_container" "this" {
       }
     }
   }
-  # Unique key is required 
-  unique_key {
-    paths = each.value.sql_unique_key
+  dynamic "unique_key" {
+    for_each = length(each.value.sql_unique_key) > 0 ? each.value.sql_unique_key : []
+    content {
+      paths = each.value.sql_unique_key
+    }
   }
   # Confliction resolution policy 
   dynamic "conflict_resolution_policy" {
