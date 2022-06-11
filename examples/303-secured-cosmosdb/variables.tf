@@ -29,7 +29,7 @@ variable "key_vault_key_name" {
 variable "virtual_network_name" {
   type        = string
   description = "Virtual Network Name"
-  default     = "samplevnet_202"
+  default     = "samplevnet_303"
 }
 
 variable "vnet_address_space" {
@@ -72,6 +72,11 @@ variable "pe_connection_name" {
   type        = string
   description = "Private Endpoint Connection Name"
   default     = "pe_connection"
+}
+
+variable "log_analytics_workspace_name" {
+  type        = string
+  description = "Log Analytics Workspace Name"
 }
 
 variable "cosmos_account_name" {}

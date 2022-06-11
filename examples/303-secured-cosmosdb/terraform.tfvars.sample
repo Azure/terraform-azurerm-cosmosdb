@@ -1,7 +1,23 @@
 resource_group_name = "rg-sample-303"
 location            = "eastus"
 cosmos_account_name = "samplecosmosacct303"
+key_vault_name      = "samplekv303"
+key_vault_key_name  = "sampleakvkey303"
 cosmos_api          = "sql"
+log_analytics_workspace_name = "sampleworkspace303"
+geo_locations = [
+  {
+    geo_location      = "eastus"
+    failover_priority = 0
+    zone_redundant    = false
+  },
+  {
+    geo_location      = "westus"
+    failover_priority = 1
+    zone_redundant    = false
+  }
+]
+
 sql_dbs = {
   one = {
     db_name           = "dbnoautoscale"
@@ -14,7 +30,6 @@ sql_dbs = {
     db_max_throughput = 1000
   }
 }
-
 sql_db_containers = {
   one = {
     container_name           = "container1"
@@ -73,30 +88,12 @@ sql_db_containers = {
   }
 }
 
-# Virtual Network, Subnet, DNS Zone and PE Parameters 
+# Virtual Network, Subnet, DNS Zone and PE Parameters
 virtual_network_name       = "samplevnet_303"
 vnet_address_space         = ["10.0.0.0/16"]
-subnet_name                = "samplesubnet_202"
+subnet_name                = "samplesubnet_303"
 subnet_prefixes            = ["10.0.0.0/24"]
 private_dns_vnet_link_name = "sqlapi_zone_link"
 dns_zone_group_name        = "pe_zone_group"
 pe_name                    = "cosmosdb_pe"
 pe_connection_name         = "cosmosdb_pe_connection"
-
-# CMK Parameters
-key_vault_name      = "samplekv303"
-key_vault_key_name  = "sampleakvkey303"
-
-# Geo location Parameters
-geo_locations = [
-  {
-    geo_location      = "eastus"
-    failover_priority = 0
-    zone_redundant    = false
-  },
-  {
-    geo_location      = "westus"
-    failover_priority = 1
-    zone_redundant    = false
-  }
-]
