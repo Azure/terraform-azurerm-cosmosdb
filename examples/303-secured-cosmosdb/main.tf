@@ -3,7 +3,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = ">=2.84"
+      version = ">=3.0"
     }
     azapi = {
       source = "azure/azapi"
@@ -197,7 +197,7 @@ module "azure_cosmos_db" {
       subnet_name                     = azurerm_subnet.read_replica.name
       vnet_name                       = azurerm_virtual_network.read_replica.name
       vnet_rg_name                    = azurerm_resource_group.read_replica.name
-    }    
+    }
   }
 
   log_analytics = {
