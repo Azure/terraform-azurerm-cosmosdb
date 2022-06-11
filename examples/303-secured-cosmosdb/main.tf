@@ -35,6 +35,11 @@ resource "azurerm_resource_group" "this" {
   location = var.location
 }
 
+resource "azurerm_resource_group" "read_replica" {
+  name     = var.resource_group_name_read_replica
+  location = var.location_read_replica
+}
+
 resource "azurerm_key_vault" "this" {
   name                       = var.key_vault_name
   location                   = azurerm_resource_group.this.location
@@ -132,6 +137,23 @@ resource "azurerm_private_dns_zone_virtual_network_link" "this" {
   registration_enabled  = false
 }
 
+
+# Read Replica Region Virtual Network for private endpoint
+resource "azurerm_virtual_network" "read_replica" {
+  name                = var.virtual_network_name_read_replica
+  resource_group_name = azurerm_resource_group.read_replica.name
+  location            = azurerm_resource_group.read_replica.location
+  address_space       = var.vnet_address_space_read_replica
+}
+
+resource "azurerm_subnet" "read_replica" {
+  name                                           = var.subnet_name_read_replica
+  resource_group_name                            = azurerm_resource_group.read_replica.name
+  virtual_network_name                           = azurerm_virtual_network.read_replica.name
+  address_prefixes                               = var.subnet_prefixes_read_replica
+  enforce_private_link_endpoint_network_policies = true
+}
+
 resource "azurerm_log_analytics_workspace" "this" {
   name                = var.log_analytics_workspace_name
   location            = azurerm_resource_group.this.location
@@ -157,6 +179,7 @@ module "azure_cosmos_db" {
     "pe_endpoint" = {
       dns_zone_group_name             = var.dns_zone_group_name
       dns_zone_rg_name                = azurerm_private_dns_zone.this.resource_group_name
+      enable_private_dns_entry        = true
       is_manual_connection            = false
       name                            = var.pe_name
       private_service_connection_name = var.pe_connection_name
@@ -164,6 +187,17 @@ module "azure_cosmos_db" {
       vnet_name                       = azurerm_virtual_network.this.name
       vnet_rg_name                    = azurerm_resource_group.this.name
     }
+    "pe_endpoint_read_replica" = {
+      dns_zone_group_name             = var.dns_zone_group_name
+      dns_zone_rg_name                = azurerm_private_dns_zone.this.resource_group_name
+      enable_private_dns_entry        = false
+      is_manual_connection            = false
+      name                            = var.pe_name_read_replica
+      private_service_connection_name = var.pe_connection_name_read_replica
+      subnet_name                     = azurerm_subnet.read_replica.name
+      vnet_name                       = azurerm_virtual_network.read_replica.name
+      vnet_rg_name                    = azurerm_resource_group.read_replica.name
+    }    
   }
 
   log_analytics = {
