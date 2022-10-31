@@ -59,6 +59,7 @@ module "azure_cosmos_db" {
     "pe_endpoint" = {
       dns_zone_group_name             = var.dns_zone_group_name
       dns_zone_rg_name                = azurerm_private_dns_zone.this.resource_group_name
+      enable_private_dns_entry        = true
       is_manual_connection            = false
       name                            = var.pe_name
       private_service_connection_name = var.pe_connection_name
