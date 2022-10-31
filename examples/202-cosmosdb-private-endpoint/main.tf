@@ -30,7 +30,7 @@ resource "azurerm_subnet" "this" {
   resource_group_name                            = azurerm_resource_group.this.name
   virtual_network_name                           = azurerm_virtual_network.this.name
   address_prefixes                               = var.subnet_prefixes
-  enforce_private_link_endpoint_network_policies = true
+  private_endpoint_network_policies_enabled = true
 }
 
 # Private DNS Zone for SQL API 
