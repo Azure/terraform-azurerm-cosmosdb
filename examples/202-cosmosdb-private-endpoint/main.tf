@@ -26,11 +26,11 @@ resource "azurerm_virtual_network" "this" {
 }
 
 resource "azurerm_subnet" "this" {
-  name                                           = var.subnet_name
-  resource_group_name                            = azurerm_resource_group.this.name
-  virtual_network_name                           = azurerm_virtual_network.this.name
-  address_prefixes                               = var.subnet_prefixes
-  enforce_private_link_endpoint_network_policies = true
+  name                                      = var.subnet_name
+  resource_group_name                       = azurerm_resource_group.this.name
+  virtual_network_name                      = azurerm_virtual_network.this.name
+  address_prefixes                          = var.subnet_prefixes
+  private_endpoint_network_policies_enabled = true
 }
 
 # Private DNS Zone for SQL API 
@@ -59,6 +59,7 @@ module "azure_cosmos_db" {
     "pe_endpoint" = {
       dns_zone_group_name             = var.dns_zone_group_name
       dns_zone_rg_name                = azurerm_private_dns_zone.this.resource_group_name
+      enable_private_dns_entry        = true
       is_manual_connection            = false
       name                            = var.pe_name
       private_service_connection_name = var.pe_connection_name
