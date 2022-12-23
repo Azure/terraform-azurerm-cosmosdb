@@ -12,8 +12,9 @@ locals {
   firewall_ips         = var.firewall_ip == [] ? "${join(",", var.azure_portal_access, var.azure_dc_access)}" : "${join(",", var.firewall_ip, var.azure_portal_access, var.azure_dc_access)}"
   diag_settings_name   = "diag-${local.cosmos_account_name}"
   diag_logs            = var.cosmos_api == "sql" ? ["QueryRuntimeStatistics", "PartitionKeyRUConsumption"] : [var.logs_config[var.cosmos_api]]
-  tags = {
+  default_tags = {
     Application_Name = var.application_name
     Environment      = var.environment
   }
+  tags = length(var.tags) > 0 ? var.tags : local.default_tags
 }
